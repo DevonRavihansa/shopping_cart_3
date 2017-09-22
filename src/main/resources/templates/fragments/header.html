@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thmyeleaf-extras-springsecurity4" lang="en">
+<head>
+    <th:block th:fragment="scripts">
+        <script th:src="@{/webjars/angularjs/1.6.4/angular.min.js}"></script>
+        <script th:src="@{/webjars/angularjs/1.6.4/angular-resource.min.js}"></script>
+        <script th:src="@{/js/app.js?v={time}(time=${#dates.createNow()})}"></script>
+        <script th:src="@{/js/cart.js?v={time}(time=${#dates.createNow()})}"></script>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+                var cart_data = /*[[${cart}]]*/ '{}';
+                app.value("cart_data", cart_data);
+            /*]]>*/
+        </script>
+    </th:block>
+</head>
+<body>
+<ul th:fragment="navigation">
+    <li><a th:href="@{/}">Home</a></li>
+    <li><a th:href="@{/shop}">Shop</a></li>
+    <li><a th:href="@{/order}">Order</a></li>
+    <li><a th:href="@{/json}">JSON</a></li>
+    <li><a th:href="@{/login}">Login</a></li>
+    <li>
+        <a th:href="@{/cart}">Cart Rs.{{cart.total}} ({{cart.itemCount}} items)</a>
+        <ul>
+            <li ng-repeat="item in cart.items">
+                Product: {{item.product.name}}, Price: Rs.{{item.product.price}}/=, Quantity: {{item.quantity}}, Sub Total: {{item.subTotal}}
+            </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thmyeleaf-extras-springsecurity4" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login Page</title>
+    <th:block th:replace="fragments/header :: scripts"></th:block>
+</head>
+<body ng-app="app" ng-controller="cart">
+<ul th:replace="fragments/header :: navigation"></ul>
+
+<form th:action="@{/login}" method="post">
+    <table>
+        <tbody>
+        <tr>
+            <td>username</td>
+            <td><input type="text" name="username" /></td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit">login</button></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+</body>
+</html>

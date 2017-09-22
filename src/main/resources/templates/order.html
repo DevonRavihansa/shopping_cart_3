@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thmyeleaf-extras-springsecurity4" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Order Page</title>
+    <th:block th:replace="fragments/header :: scripts"></th:block>
+</head>
+<body ng-app="app" ng-controller="cart">
+<ul th:replace="fragments/header :: navigation"></ul>
+
+<ul>
+    <li th:each="item : ${cart.items}" th:inline="text">
+        <span th:text="${item.product.name}"></span>,
+        <span th:text="${item.quantity}"></span>,
+        <span th:text="${item.subTotal}"></span>
+    </li>
+</ul>
+<h4 th:text="${cart.total}"></h4>
+</body>
+</html>
